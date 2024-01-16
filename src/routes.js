@@ -24,6 +24,12 @@ export const routes = [
     path: buildRoutePath('/tasks'),
     handler: (req, res) => {
       const { title, description } = req.body;
+
+      if(!title || !description) {
+        return res.writeHead(400).end(JSON.stringify({
+          message: 'Title and description is required'
+        }));
+      }
       
       const task = {
         id: randomUUID(),
