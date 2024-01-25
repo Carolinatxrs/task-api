@@ -1,6 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import { Database } from './database.js';
 import { buildRoutePath } from './utils/build-route-path.js';
+import { validateUUID } from './utils/validate-uuid.js';
 
 const database = new Database();
 
@@ -52,33 +53,62 @@ export const routes = [
       const { id } = req.params;
       const { title, description } = req.body;
 
+      if (!validateUUID(id)) {
+        return res.writeHead(404).end(JSON.stringify({
+          message: 'Task not found'
+        }));
+      }
+
+      const [task] = database.select('tasks', {
+        id
+      });
+
+      if (!task) {
+        return res.writeHead(404).end(JSON.stringify({
+          message: 'Task not found'
+        }));
+      }
+
       if (!title && !description) {
         return res.writeHead(400).end(JSON.stringify({
           message: 'You can only update the title or description'
         }));
       }
 
-      if (title && !description) {
-        database.update('tasks', id, {
-          title,
-          updated_at: new Date()
-        });
+      database.update('tasks', id, {
+        title: title ? title : task.title,
+        description: description ? description : task.description,
+        updated_at: new Date()
+      });
+
+      return res.writeHead(204).end();
+    }
+  },
+  {
+    method: 'PATCH',
+    path: buildRoutePath('/tasks/:id/complete'),
+    handler: (req, res) => {
+      const { id } = req.params;
+
+      if (!validateUUID(id)) {
+        return res.writeHead(404).end(JSON.stringify({
+          message: 'Task not found'
+        }));
       }
 
-      if (description && !title) {
-        database.update('tasks', id, {
-          description,
-          updated_at: new Date()
-        });
+      const [task] = database.select('tasks', {
+        id
+      });
+
+      if (!task) {
+        return res.writeHead(404).end(JSON.stringify({
+          message: 'Task not found'
+        }));
       }
 
-      if (title && description) {
-        database.update('tasks', id, {
-          title,
-          description,
-          updated_at: new Date()
-        });
-      }
+      database.update('tasks', id, {
+        completed_at: task.completed_at ? null : new Date(),
+      });
 
       return res.writeHead(204).end();
     }
@@ -88,6 +118,22 @@ export const routes = [
     path: buildRoutePath('/tasks/:id'),
     handler: (req, res) => {
       const { id } = req.params;
+
+      if (!validateUUID(id)) {
+        return res.writeHead(404).end(JSON.stringify({
+          message: 'Task not found'
+        }));
+      }
+
+      const [task] = database.select('tasks', {
+        id
+      });
+
+      if (!task) {
+        return res.writeHead(404).end(JSON.stringify({
+          message: 'Task not found'
+        }));
+      }
 
       database.delete('tasks', id);
 
