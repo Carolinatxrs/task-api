@@ -1,0 +1,89 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "task-api",
+    "dateExported": "2024-02-16T20:09:59.894Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "135cba5e-1ca4-476c-ae2c-ff6f4f40f6f2",
+            "colId": "dc51e57b-23df-450c-bced-33d019e0d003",
+            "containerId": "",
+            "name": "List tasks",
+            "url": "localhost:3333/tasks",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-01-16T00:36:56.052Z",
+            "modified": "2024-01-17T21:58:37.644Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "927b3345-9b00-40c9-bacb-29ecf737fcda",
+            "colId": "dc51e57b-23df-450c-bced-33d019e0d003",
+            "containerId": "",
+            "name": "Delete task",
+            "url": "localhost:3333/tasks/26b4e543-a6ab-4666-8e1a-4fcf1f57bc59",
+            "method": "DELETE",
+            "sortNum": 15000,
+            "created": "2024-01-17T21:57:10.813Z",
+            "modified": "2024-01-25T16:00:25.238Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "21b2f194-34e0-448b-a141-23446b3926dc",
+            "colId": "dc51e57b-23df-450c-bced-33d019e0d003",
+            "containerId": "",
+            "name": "Create task",
+            "url": "localhost:3333/tasks",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-01-16T01:14:32.367Z",
+            "modified": "2024-01-17T22:18:01.061Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"testee\",\n  \"description\": \"teste\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "fa86af9b-d25f-46f2-96cf-79e55a996870",
+            "colId": "dc51e57b-23df-450c-bced-33d019e0d003",
+            "containerId": "",
+            "name": "Update task",
+            "url": "localhost:3333/tasks/4ac2277d-5d93-4876-b2ec-578c0008ba25",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-01-22T23:01:17.249Z",
+            "modified": "2024-01-25T15:53:28.448Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"Teste\",\n  \"description\": \"Deletar\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "4269bde4-6ab8-4741-9e5e-ac95e79f5c9e",
+            "colId": "dc51e57b-23df-450c-bced-33d019e0d003",
+            "containerId": "",
+            "name": "Complete task",
+            "url": "localhost:3333/tasks/23893163-ee31-46ba-8287-80a45bc77dfd/complete",
+            "method": "PATCH",
+            "sortNum": 40000,
+            "created": "2024-01-25T14:38:01.289Z",
+            "modified": "2024-01-30T20:02:52.483Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
