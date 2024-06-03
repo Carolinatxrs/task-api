@@ -1,5 +1,6 @@
-![image](https://github.com/Carolinatxrs/task-api/assets/70086416/decaa83a-4131-4069-8eee-0b20f9af514a)
-
+<p align="center">
+  <img src="https://github.com/Carolinatxrs/task-api/assets/70086416/decaa83a-4131-4069-8eee-0b20f9af514a" alt="node.js" style="width: 10%;" />
+</p>
 
 ## Task API
 
